@@ -40,7 +40,7 @@ window.addEventListener("click", e => {
 // === Form Submission to Google Sheets ===
 const form = document.querySelector(".modal-content form");
 
-// Updated Google Apps Script Web App URL
+// Google Apps Script Web App URL
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwdGk3aNsYWpYSbAUADvSRdCUdU5m7RwSpg3yxJOP2RHgPhc7X3OijYFHxlHWJCSRO_fA/exec";
 
 form.addEventListener("submit", e => {
@@ -54,7 +54,7 @@ form.addEventListener("submit", e => {
     time: form.time.value
   };
 
-  // Use URLSearchParams for a URL-encoded POST (avoids CORS issues)
+  // Use URLSearchParams for URL-encoded POST
   const formData = new URLSearchParams();
   for (const key in data) formData.append(key, data[key]);
 
