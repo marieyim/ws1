@@ -4,6 +4,9 @@ body {
   background-position: center center;
   font-family: Verdana, sans-serif;
   transition: background-image 1s ease-in-out;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
 .center-box {
@@ -11,19 +14,17 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  
-  width: 500px;
-  min-height: 100px;
-  background-color: rgba(255, 255, 255, 0.9);
+  width: 90%;
+  max-width: 500px;
+  min-height: 150px;
+  background-color: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  padding: 40px;
+  padding: 30px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -35,8 +36,8 @@ body {
 
 .center-box h1 {
   color: #333;
-  margin-bottom: 6px;
-  font-size: 32px;
+  margin-bottom: 8px;
+  font-size: 2rem;
   letter-spacing: 1px;
   font-weight: bold;
 }
@@ -46,19 +47,18 @@ body {
   margin-top: 0;
   margin-bottom: 15px;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.4;
 }
 
-
 .center-box p {
   color: #555;
-  font-size: 18px;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 .divider {
-  width: 100%;
+  width: 80%;
   margin: 10px auto;
   border: none;
   height: 2px;
@@ -67,8 +67,9 @@ body {
 
 .button-group {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   margin-top: 10px;
 }
 
@@ -77,8 +78,8 @@ body {
   color: white;
   border: none;
   border-radius: 25px;
-  padding: 12px 25px;
-  font-size: 12px;
+  padding: 10px 20px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
   font-weight: bold;
@@ -114,17 +115,19 @@ body {
 
 .modal-content {
   background-color: #fff;
-  margin: 5% auto 0 auto;
+  margin: 5% auto;
   padding: 30px;
   border-radius: 15px;
-  width: 400px;
-  max-width: 90%;
+  width: 90%;
+  max-width: 400px;
   max-height: 90vh;
   overflow-y: auto;
   text-align: center;
   position: relative;
   transform: translateY(-50px);
   transition: transform 0.4s ease;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .modal.show .modal-content {
@@ -135,27 +138,27 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  box-sizing: border-box;
 }
 
 .form-row {
   display: flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
 }
 
 .form-row label {
-  width: 120px;
-  text-align: left;
   font-weight: normal;
 }
 
 .form-row input {
-  flex: 1;
-  max-width: 250px;
-  padding: 8px 10px;
+  width: 100%;
+  padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
+  box-sizing: border-box;
 }
 
 .modal-content .close {
@@ -165,20 +168,6 @@ body {
   font-size: 28px;
   font-weight: bold;
   cursor: pointer;
-}
-
-.modal-content form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.modal-content input, 
-.modal-content button {
-  padding: 10px;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 16px;
 }
 
 .modal-content button {
@@ -200,4 +189,33 @@ body {
 
 .modal-content button:active {
   transform: scale(0.98);
+}
+
+@media (max-width: 600px) {
+  .modal-content {
+    width: 90%;
+    max-width: 320px;
+    padding: 20px;
+    max-height: 80vh;
+  }
+
+  .modal-content form {
+    gap: 10px;
+  }
+
+  .modal-content input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .modal-content button {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .modal-content .close {
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+  }
 }

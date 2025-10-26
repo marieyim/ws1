@@ -1,4 +1,4 @@
-// === Background Carousel ===
+// Background Carousel
 const images = [
   'images/IMG_0319.jpg',
   'images/IMG_0320.jpg',
@@ -13,7 +13,7 @@ function changeBackground() {
 changeBackground();
 setInterval(changeBackground, 5000);
 
-// === Modal Handling ===
+// Modal Handling 
 const modal = document.getElementById("bookingModal");
 const openBtn = document.querySelector(".button-group button:first-child");
 const closeBtn = document.querySelector(".modal .close");
@@ -37,10 +37,10 @@ window.addEventListener("click", e => {
   if (e.target === modal) closeModal();
 });
 
-// === Form Submission to Google Sheets ===
+// Form Submission save to Google Sheets 
+// https://docs.google.com/spreadsheets/d/1vS3JFNWtcQlc1z0u5aUblIBjFpf99x4tv9hszookQqY/edit?gid=0#gid=0
 const form = document.querySelector(".modal-content form");
 
-// Google Apps Script Web App URL
 const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby6oKtWAL-LL8ChPie4oRKP3Y33cioO-cJwuoGjHESkvbay34tXcXEsdnrualDVwSHJ/exec";
 
 form.addEventListener("submit", e => {
@@ -54,7 +54,6 @@ form.addEventListener("submit", e => {
     time: form.time.value
   };
 
-  // Use URLSearchParams for URL-encoded POST
   const formData = new URLSearchParams();
   for (const key in data) formData.append(key, data[key]);
 
@@ -69,7 +68,7 @@ form.addEventListener("submit", e => {
     closeModal();
   })
   .catch(err => {
-    alert("Error submitting. Make sure the Web App is deployed as 'Anyone, even anonymous'.");
+    alert("Error submitting");
     console.error(err);
   });
 });
