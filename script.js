@@ -41,7 +41,7 @@ window.addEventListener("click", e => {
 const form = document.querySelector(".modal-content form");
 
 // Google Apps Script Web App URL
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwdGk3aNsYWpYSbAUADvSRdCUdU5m7RwSpg3yxJOP2RHgPhc7X3OijYFHxlHWJCSRO_fA/exec";
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby6oKtWAL-LL8ChPie4oRKP3Y33cioO-cJwuoGjHESkvbay34tXcXEsdnrualDVwSHJ/exec";
 
 form.addEventListener("submit", e => {
   e.preventDefault();
