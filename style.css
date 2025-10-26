@@ -345,7 +345,7 @@ input#time:focus {
 
   /* Hover images inside About Us modal */
   #hoverPreview {
-    max-width: 200px;    /* smaller preview on phone */
-    max-height: 200px;
+    max-width: 400px;    /* smaller preview on phone */
+    max-height: 400px;
   }
 }

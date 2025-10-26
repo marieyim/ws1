@@ -219,3 +219,23 @@ document.querySelectorAll('.hover-image').forEach(el => {
         hoverPreview.style.display = 'none';
     });
 });
+
+// About Us Image Preview
+document.querySelectorAll('#aboutModal .hover-image').forEach(item => {
+    item.addEventListener('click', (e) => {
+        const imgSrc = item.dataset.img;
+        const preview = document.getElementById('hoverPreview');
+        preview.innerHTML = `<img src="${imgSrc}" alt="Staff Image">`;
+        
+        // Position preview centered on mobile
+        preview.style.display = 'block';
+        preview.style.top = '50%';
+        preview.style.left = '50%';
+        preview.style.transform = 'translate(-50%, -50%)';
+    });
+});
+
+// Close image preview when clicking outside
+document.getElementById('hoverPreview').addEventListener('click', () => {
+    document.getElementById('hoverPreview').style.display = 'none';
+});
