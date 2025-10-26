@@ -127,3 +127,95 @@ flatpickr("#time", {
     });
 
 });
+
+// Get elements
+const centerBox = document.querySelector('.center-box');
+const aboutBtn = document.getElementById('aboutBtn');
+const aboutModal = document.getElementById('aboutModal');
+const closeBtns = document.querySelectorAll('.modal .close');
+
+// Show modal with fade-in and slide
+function showModal(modal) {
+    modal.style.display = 'block';
+    setTimeout(() => modal.classList.add('show'), 10); // trigger CSS transition
+}
+
+// Hide modal with fade-out
+function hideModal(modal) {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        // Restore center-box if About modal closed
+        if (modal === aboutModal) {
+            centerBox.style.display = 'flex';
+            setTimeout(() => {
+                centerBox.style.opacity = 1;
+                centerBox.style.transform = 'translate(-50%, -50%) scale(1)';
+            }, 10);
+        }
+    }, 400); // match modal fade duration
+}
+
+// Close buttons functionality
+closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        hideModal(btn.closest('.modal'));
+    });
+});
+
+// Click outside modal to close
+window.addEventListener('click', e => {
+    if (e.target.classList.contains('modal')) {
+        hideModal(e.target);
+    }
+});
+
+// About Us button click
+aboutBtn.addEventListener('click', () => {
+    // Fade out center-box
+    centerBox.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    centerBox.style.opacity = 0;
+    centerBox.style.transform = 'translate(-50%, -50%) scale(0.95)';
+
+    // Wait for fade-out, then hide center-box and show modal
+    setTimeout(() => {
+        centerBox.style.display = 'none';
+        showModal(aboutModal);
+    }, 600);
+});
+
+const hoverPreview = document.createElement('div');
+hoverPreview.style.position = 'absolute';
+hoverPreview.style.display = 'none';
+hoverPreview.style.border = '1px solid #ccc';
+hoverPreview.style.background = '#fff';
+hoverPreview.style.padding = '5px';
+hoverPreview.style.zIndex = '1000';
+document.body.appendChild(hoverPreview);
+
+document.querySelectorAll('.hover-image').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        const imgSrc = el.getAttribute('data-img');
+        hoverPreview.innerHTML = `<img src="${imgSrc}" alt="Profile Image" style="max-width:400px; max-height:400px;">`;
+        hoverPreview.style.display = 'block';
+
+        const img = hoverPreview.querySelector('img');
+        img.onload = () => {
+            const rect = el.getBoundingClientRect();
+            let top = rect.top - hoverPreview.offsetHeight - 8; // default above
+            const left = rect.left;
+
+            // If there's no space above, show below
+            if (top < 0) {
+                top = rect.bottom + 8;
+            }
+
+            hoverPreview.style.top = `${top + window.scrollY}px`;
+            hoverPreview.style.left = `${left + window.scrollX}px`;
+        };
+    });
+
+    el.addEventListener('mouseleave', () => {
+        hoverPreview.style.display = 'none';
+    });
+});

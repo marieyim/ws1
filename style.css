@@ -59,6 +59,16 @@ body {
   line-height: 1.5;
 }
 
+.center-box {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.center-box.fade-out {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+}
+
+
 .divider {
   width: 80%;
   margin: 10px auto;
@@ -205,35 +215,6 @@ body {
   transform: scale(0.98);
 }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .modal-content {
-    width: 90%;
-    max-width: 320px;
-    padding: 20px;
-    max-height: 80vh;
-  }
-
-  .modal-content form {
-    gap: 10px;
-  }
-
-  .modal-content input {
-    font-size: 14px;
-    padding: 8px;
-  }
-
-  .modal-content button {
-    font-size: 14px;
-    padding: 10px 20px;
-  }
-
-  .modal-content .close {
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-  }
-}
 
 /* ================= Flatpickr Styles ================= */
 
@@ -287,4 +268,84 @@ input#time:focus {
     border-color: #1e90ff;
     box-shadow: 0 0 5px rgba(30,144,255,0.5);
     outline: none;
+}
+
+
+/* About Modal Left Alignment */
+#aboutModal .modal-content {
+    width: 95%;      /* almost full width */
+    max-width: 700px; /* wider limit */
+    padding: 30px 25px;
+    text-align: left;
+}
+
+#aboutModal .modal-content h2 {
+    text-align: center; /* keep heading centered */
+}
+
+#aboutModal .modal-content ul {
+    padding-left: 20px; /* indent staff list */
+    margin: 5px 0 15px 0;
+}
+
+#aboutModal .modal-content li {
+    margin: 5px 0 15px 0;
+}
+
+#aboutModal .modal-content p {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+/* Hover image container */
+#hoverPreview {
+    position: absolute;
+    max-width: 400px;
+    max-height: 400px;
+    display: none;
+    border: 2px solid gray;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1100;
+}
+
+/* Image inside preview */
+#hoverPreview img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+
+/* =================== About Modal Responsive =================== */
+@media (max-width: 600px) {
+  #aboutModal .modal-content {
+    width: 95%;          /* almost full width on small screens */
+    max-width: 350px;    /* smaller max width for phones */
+    padding: 20px;       /* reduce padding */
+    text-align: left;
+  }
+
+  #aboutModal .modal-content h2 {
+    font-size: 1.5rem;   /* slightly smaller heading */
+    text-align: center;
+  }
+
+  #aboutModal .modal-content p,
+  #aboutModal .modal-content li {
+    font-size: 0.9rem;   /* smaller font for readability */
+    margin-bottom: 10px; /* smaller spacing */
+  }
+
+  #aboutModal .modal-content ul {
+    padding-left: 15px;  /* smaller indent for staff list */
+  }
+
+  /* Hover images inside About Us modal */
+  #hoverPreview {
+    max-width: 200px;    /* smaller preview on phone */
+    max-height: 200px;
+  }
 }
