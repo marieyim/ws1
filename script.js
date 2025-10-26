@@ -194,29 +194,54 @@ hoverPreview.style.zIndex = '1000';
 document.body.appendChild(hoverPreview);
 
 document.querySelectorAll('.hover-image').forEach(el => {
+    // Desktop hover
     el.addEventListener('mouseenter', () => {
-        const imgSrc = el.getAttribute('data-img');
-        hoverPreview.innerHTML = `<img src="${imgSrc}" alt="Profile Image" style="max-width:400px; max-height:400px;">`;
-        hoverPreview.style.display = 'block';
-
-        const img = hoverPreview.querySelector('img');
-        img.onload = () => {
-            const rect = el.getBoundingClientRect();
-            let top = rect.top - hoverPreview.offsetHeight - 8; // default above
-            const left = rect.left;
-
-            // If there's no space above, show below
-            if (top < 0) {
-                top = rect.bottom + 8;
-            }
-
-            hoverPreview.style.top = `${top + window.scrollY}px`;
-            hoverPreview.style.left = `${left + window.scrollX}px`;
-        };
+        if (window.innerWidth > 600) { // only for desktop
+            showPreview(el);
+        }
+    });
+    el.addEventListener('mouseleave', () => {
+        if (window.innerWidth > 600) { // only for desktop
+            hoverPreview.style.display = 'none';
+        }
     });
 
-    el.addEventListener('mouseleave', () => {
-        hoverPreview.style.display = 'none';
+    // Mobile click / tap
+    el.addEventListener('click', () => {
+        if (window.innerWidth <= 600) { // only for mobile
+            showPreview(el, true);
+        }
     });
 });
 
+function showPreview(el, mobile = false) {
+    const imgSrc = el.getAttribute('data-img');
+    hoverPreview.innerHTML = `<img src="${imgSrc}" alt="Profile Image" style="max-width:400px; max-height:400px;">`;
+    hoverPreview.style.display = 'block';
+
+    const img = hoverPreview.querySelector('img');
+    img.onload = () => {
+        const rect = el.getBoundingClientRect();
+        let top = rect.top - hoverPreview.offsetHeight - 8; // default above
+        const left = rect.left;
+
+        if (mobile) {
+            // center on mobile
+            hoverPreview.style.top = '50%';
+            hoverPreview.style.left = '50%';
+            hoverPreview.style.transform = 'translate(-50%, -50%)';
+        } else {
+            hoverPreview.style.transform = 'none';
+            if (top < 0) {
+                top = rect.bottom + 8; // show below if no space
+            }
+            hoverPreview.style.top = `${top + window.scrollY}px`;
+            hoverPreview.style.left = `${left + window.scrollX}px`;
+        }
+    };
+}
+
+// Close preview when clicking anywhere
+hoverPreview.addEventListener('click', () => {
+    hoverPreview.style.display = 'none';
+});
