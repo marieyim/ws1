@@ -40,8 +40,8 @@ window.addEventListener("click", e => {
 // === Form Submission to Google Sheets ===
 const form = document.querySelector(".modal-content form");
 
-// Your Google Apps Script Web App URL (deployed as "Anyone, even anonymous")
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbybFLIxWc3yUNLnBLwrOtt4H25i6wL7dQmFTNnE3pkvduYfJ_hRnxxO0xICmKlte9V4zA/exec";
+// Updated Google Apps Script Web App URL
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwdGk3aNsYWpYSbAUADvSRdCUdU5m7RwSpg3yxJOP2RHgPhc7X3OijYFHxlHWJCSRO_fA/exec";
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -54,7 +54,7 @@ form.addEventListener("submit", e => {
     time: form.time.value
   };
 
-  // Use FormData + URL-encoded for Google Apps Script (avoids CORS issues with fetch JSON)
+  // Use URLSearchParams for a URL-encoded POST (avoids CORS issues)
   const formData = new URLSearchParams();
   for (const key in data) formData.append(key, data[key]);
 
@@ -62,17 +62,14 @@ form.addEventListener("submit", e => {
     method: "POST",
     body: formData
   })
-  .then(res => {
-    if (res.ok) {
-      alert("Booking submitted successfully!");
-      form.reset();
-      closeModal();
-    } else {
-      throw new Error("Network response was not ok.");
-    }
+  .then(res => res.json())
+  .then(response => {
+    alert("Booking submitted successfully!");
+    form.reset();
+    closeModal();
   })
   .catch(err => {
-    alert("Error submitting. Please make sure your Google Apps Script is deployed as 'Anyone, even anonymous'.");
+    alert("Error submitting. Make sure the Web App is deployed as 'Anyone, even anonymous'.");
     console.error(err);
   });
 });
