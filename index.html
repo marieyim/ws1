@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WS1 Project</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body>
 
@@ -38,17 +39,19 @@
             </div>
             <div class="form-row">
                 <label for="date">Date:</label>
-                <input type="date" id="date" name="date" required>
+                <input type="text" id="date" name="date" placeholder="Select date" required>
             </div>
             <div class="form-row">
                 <label for="time">Time:</label>
-                <input type="time" id="time" name="time" required>
+                <input type="text" id="time" name="time" placeholder="Select time" required>
             </div>
+
             <button type="submit">Submit</button>
         </form>
     </div>
 </div>
 
 <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>

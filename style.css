@@ -1,3 +1,4 @@
+/* Body & Background */
 body {
   background-size: cover;
   background-repeat: no-repeat;
@@ -9,6 +10,7 @@ body {
   min-height: 100vh;
 }
 
+/* Center Box */
 .center-box {
   position: absolute;
   top: 50%;
@@ -65,6 +67,7 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Buttons */
 .button-group {
   display: flex;
   flex-wrap: wrap;
@@ -94,6 +97,7 @@ body {
   transform: scale(0.98);
 }
 
+/* Modal */
 .modal {
   display: none;
   position: fixed;
@@ -154,13 +158,22 @@ body {
 
 .form-row input {
   width: 100%;
-  padding: 10px;
+  padding: 10px 12px;
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 16px;
   box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* Input Focus Effect */
+.form-row input:focus {
+  border-color: #1e90ff;
+  box-shadow: 0 0 5px rgba(30,144,255,0.5);
+  outline: none;
+}
+
+/* Modal Close Button */
 .modal-content .close {
   position: absolute;
   top: 15px;
@@ -170,6 +183,7 @@ body {
   cursor: pointer;
 }
 
+/* Modal Buttons */
 .modal-content button {
   background-color: gray;
   color: white;
@@ -191,6 +205,7 @@ body {
   transform: scale(0.98);
 }
 
+/* Responsive */
 @media (max-width: 600px) {
   .modal-content {
     width: 90%;
@@ -218,4 +233,58 @@ body {
     right: 15px;
     font-size: 24px;
   }
+}
+
+/* ================= Flatpickr Styles ================= */
+
+/* Calendar Popup */
+.flatpickr-calendar {
+    background-color: #f0f8ff;
+    border: 2px solid gray;
+    border-radius: 10px;
+    font-family: Verdana, sans-serif;
+}
+
+/* Header (month/year) */
+.flatpickr-months {
+    background-color: gray;
+    color: white;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Weekdays */
+.flatpickr-weekdays {
+    background-color: #e6f2ff;
+}
+
+/* Selected day */
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background-color: gray !important;
+    color: white !important;
+}
+
+/* Hover effect */
+.flatpickr-day:hover {
+    background-color: #87cefa;
+}
+
+/* Input fields styling for Flatpickr */
+input#date,
+input#time {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input#date:focus,
+input#time:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 5px rgba(30,144,255,0.5);
+    outline: none;
 }

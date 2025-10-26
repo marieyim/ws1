@@ -41,7 +41,7 @@ window.addEventListener("click", e => {
 // https://docs.google.com/spreadsheets/d/1vS3JFNWtcQlc1z0u5aUblIBjFpf99x4tv9hszookQqY/edit?gid=0#gid=0
 const form = document.querySelector(".modal-content form");
 
-const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycby6oKtWAL-LL8ChPie4oRKP3Y33cioO-cJwuoGjHESkvbay34tXcXEsdnrualDVwSHJ/exec";
+const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwemvt_tfCHkRtBPFJND-TDwPdtQv3EW664feWfoVnxo0xULpYgd037mbAsESHj_JJZ9A/exec";
 
 form.addEventListener("submit", e => {
   e.preventDefault();
@@ -71,4 +71,44 @@ form.addEventListener("submit", e => {
     alert("Error submitting");
     console.error(err);
   });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+flatpickr("#time", {
+    enableTime: true,
+    noCalendar: true,
+    dateFormat: "h:i K",
+    time_24hr: false,
+    minuteIncrement: 15,
+    minTime: "07:00",
+    maxTime: "21:00",
+    allowInput: true, // allows typing
+    onClose: function(selectedDates, dateStr, instance) {
+        if (!dateStr) return; // no input
+        
+        let time = instance.parseDate(dateStr, "h:i K");
+        let minutes = time.getMinutes();
+
+        // Round to nearest allowed minute: 0, 15, 30, 45
+        let allowedMinutes = [0, 15, 30, 45];
+        let closest = allowedMinutes.reduce((prev, curr) => 
+            Math.abs(curr - minutes) < Math.abs(prev - minutes) ? curr : prev
+        );
+
+        if (minutes !== closest) {
+            time.setMinutes(closest);
+            instance.setDate(time, true); // update input
+        }
+    }
+});
+
+
+
+    flatpickr("#date", {
+        dateFormat: "Y-m-d", // YYYY-MM-DD format
+        minDate: "today",     // disable all past dates
+        disableMobile: true   // optional: always use Flatpickr UI
+    });
+
 });
