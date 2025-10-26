@@ -239,3 +239,25 @@ document.querySelectorAll('#aboutModal .hover-image').forEach(item => {
 document.getElementById('hoverPreview').addEventListener('click', () => {
     document.getElementById('hoverPreview').style.display = 'none';
 });
+
+// Get all hover-image elements
+const staffElements = document.querySelectorAll('.hover-image');
+const hoverPreview = document.getElementById('hoverPreview');
+
+// Show preview on click
+staffElements.forEach(item => {
+    item.addEventListener('click', () => {
+        const imgSrc = item.dataset.img;
+        hoverPreview.innerHTML = `<img src="${imgSrc}" alt="Staff Image">`;
+        hoverPreview.style.display = 'block';
+        hoverPreview.style.top = '50%';
+        hoverPreview.style.left = '50%';
+        hoverPreview.style.transform = 'translate(-50%, -50%)';
+    });
+});
+
+// Close preview when tapping anywhere on it
+hoverPreview.addEventListener('click', () => {
+    hoverPreview.style.display = 'none';
+});
+
