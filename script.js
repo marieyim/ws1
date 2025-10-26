@@ -46,6 +46,12 @@ const GOOGLE_SHEET_URL = "https://script.google.com/macros/s/AKfycbwemvt_tfCHkRt
 form.addEventListener("submit", e => {
   e.preventDefault();
 
+  const submitBtn = form.querySelector("button[type='submit']");
+  
+  // Disable button immediately to prevent double clicks
+  submitBtn.disabled = true;
+  submitBtn.style.opacity = 0.6;
+
   const data = {
     name: form.name.value,
     email: form.email.value,
@@ -66,12 +72,21 @@ form.addEventListener("submit", e => {
     alert("Booking submitted successfully!");
     form.reset();
     closeModal();
+
+    // Re-enable button after submission
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = 1;
   })
   .catch(err => {
     alert("Error submitting");
     console.error(err);
+
+    // Re-enable button if there was an error
+    submitBtn.disabled = false;
+    submitBtn.style.opacity = 1;
   });
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
