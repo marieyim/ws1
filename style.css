@@ -1,4 +1,4 @@
-/* Body & Background */
+/* ===================== Body & Background ===================== */
 body {
   background-size: cover;
   background-repeat: no-repeat;
@@ -10,7 +10,7 @@ body {
   min-height: 100vh;
 }
 
-/* Center Box */
+/* ===================== Center Box ===================== */
 .center-box {
   position: absolute;
   top: 50%;
@@ -29,6 +29,18 @@ body {
   padding: 30px;
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.center-box.fade-in {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.center-box.fade-out {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95);
+  transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
 }
 
 .center-box:hover {
@@ -60,14 +72,8 @@ body {
 }
 
 .center-box {
-    transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
-
-.center-box.fade-out {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.95);
-}
-
 
 .divider {
   width: 80%;
@@ -77,7 +83,7 @@ body {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Buttons */
+/* ===================== Buttons ===================== */
 .button-group {
   display: flex;
   flex-wrap: wrap;
@@ -107,7 +113,7 @@ body {
   transform: scale(0.98);
 }
 
-/* Modal */
+/* ===================== Modal Base ===================== */
 .modal {
   display: none;
   position: fixed;
@@ -148,6 +154,7 @@ body {
   transform: translateY(0);
 }
 
+/* ===================== Form Layout ===================== */
 .modal-content form {
   display: flex;
   flex-direction: column;
@@ -215,137 +222,325 @@ body {
   transform: scale(0.98);
 }
 
-
 /* ================= Flatpickr Styles ================= */
-
-/* Calendar Popup */
 .flatpickr-calendar {
-    background-color: #f0f8ff;
-    border: 2px solid gray;
-    border-radius: 10px;
-    font-family: Verdana, sans-serif;
+  background-color: #f0f8ff;
+  border: 2px solid gray;
+  border-radius: 10px;
+  font-family: Verdana, sans-serif;
 }
 
-/* Header (month/year) */
 .flatpickr-months {
-    background-color: gray;
-    color: white;
-    border-radius: 10px 10px 0 0;
+  background-color: gray;
+  color: white;
+  border-radius: 10px 10px 0 0;
 }
 
-/* Weekdays */
 .flatpickr-weekdays {
-    background-color: #e6f2ff;
+  background-color: #e6f2ff;
 }
 
-/* Selected day */
 .flatpickr-day.selected,
 .flatpickr-day.startRange,
 .flatpickr-day.endRange {
-    background-color: gray !important;
-    color: white !important;
+  background-color: gray !important;
+  color: white !important;
 }
 
-/* Hover effect */
 .flatpickr-day:hover {
-    background-color: #87cefa;
+  background-color: #87cefa;
 }
 
-/* Input fields styling for Flatpickr */
 input#date,
 input#time {
-    width: 100%;
-    padding: 10px 12px;
-    font-size: 16px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    transition: border-color 0.3s, box-shadow 0.3s;
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input#date:focus,
 input#time:focus {
-    border-color: #1e90ff;
-    box-shadow: 0 0 5px rgba(30,144,255,0.5);
-    outline: none;
+  border-color: #1e90ff;
+  box-shadow: 0 0 5px rgba(30,144,255,0.5);
+  outline: none;
 }
 
-
-/* About Modal Left Alignment */
+/* ===================== About Modal ===================== */
 #aboutModal .modal-content {
-    width: 95%;      /* almost full width */
-    max-width: 700px; /* wider limit */
-    padding: 30px 25px;
-    text-align: left;
+  width: 95%;
+  max-width: 700px;
+  padding: 30px 25px;
+  text-align: left;
 }
 
 #aboutModal .modal-content h2 {
-    text-align: center; /* keep heading centered */
+  text-align: center;
 }
 
 #aboutModal .modal-content ul {
-    padding-left: 20px; /* indent staff list */
-    margin: 5px 0 15px 0;
+  padding-left: 20px;
+  margin: 5px 0 15px 0;
 }
 
 #aboutModal .modal-content li {
-    margin: 5px 0 15px 0;
+  margin: 5px 0 15px 0;
 }
 
 #aboutModal .modal-content p {
-    margin: 8px 0;
-    line-height: 1.5;
+  margin: 8px 0;
+  line-height: 1.5;
 }
 
-/* Hover image container */
+/* Hover Image Preview */
 #hoverPreview {
-    position: absolute;
-    max-width: 400px;
-    max-height: 400px;
-    display: none;
-    border: 2px solid gray;
-    border-radius: 10px;
-    background-color: #fff;
-    padding: 5px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    z-index: 1100;
+  position: absolute;
+  max-width: 400px;
+  max-height: 400px;
+  display: none;
+  border: 2px solid gray;
+  border-radius: 10px;
+  background-color: #fff;
+  padding: 5px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  z-index: 1100;
 }
 
-/* Image inside preview */
 #hoverPreview img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
 }
 
-
-/* =================== About Modal Responsive =================== */
+/* ===================== About Modal Responsive ===================== */
 @media (max-width: 600px) {
   #aboutModal .modal-content {
-    width: 95%;          /* almost full width on small screens */
-    max-width: 350px;    /* smaller max width for phones */
-    padding: 20px;       /* reduce padding */
+    width: 95%;
+    max-width: 350px;
+    padding: 20px;
     text-align: left;
   }
 
   #aboutModal .modal-content h2 {
-    font-size: 1.5rem;   /* slightly smaller heading */
+    font-size: 1.5rem;
     text-align: center;
   }
 
   #aboutModal .modal-content p,
   #aboutModal .modal-content li {
-    font-size: 0.9rem;   /* smaller font for readability */
-    margin-bottom: 10px; /* smaller spacing */
+    font-size: 0.9rem;
+    margin-bottom: 10px;
   }
 
   #aboutModal .modal-content ul {
-    padding-left: 15px;  /* smaller indent for staff list */
+    padding-left: 15px;
   }
 
-  /* Hover images inside About Us modal */
   #hoverPreview {
-    max-width: 400px;    /* smaller preview on phone */
+    max-width: 400px;
     max-height: 400px;
   }
 }
+
+/* ===================== Menu Modal Expanded ===================== */
+#menuModal .modal-content {
+  width: 95%;
+  max-width: 800px;
+  padding: 35px 40px;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+#menuModal h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+#menuModal p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #444;
+}
+
+/* ===== Menu Modal Tabs ===== */
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background-color: gray;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.tab-btn:hover {
+  background-color: #3d4bc4;
+  transform: translateY(-3px);
+}
+
+.tab-btn.active {
+  background-color: #3d4bc4;
+}
+
+/* ===== Menu Lists ===== */
+#menuModal .menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menuModal .menu-list li {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  background-color: rgba(245, 245, 245, 0.9);
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#menuModal .menu-list li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* ===== Tab Animation ===== */
+.tab-content {
+  display: none;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Responsive for Menu Modal ===== */
+@media (max-width: 600px) {
+  #menuModal .modal-content {
+    width: 95%;
+    max-width: 380px;
+    padding: 20px;
+  }
+
+  #menuModal h2 {
+    font-size: 1.5rem;
+  }
+
+  #menuModal .menu-list li {
+    font-size: 0.95rem;
+    padding: 8px 10px;
+  }
+
+  #menuModal p, 
+  #menuModal .tab-buttons {
+    text-align: center;
+  }
+}
+
+
+/* Accordion Items */
+.accordion-item {
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.accordion-title {
+  display: flex;
+  justify-content: space-between; /* title left, price right */
+  align-items: center;
+  padding: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.title-text {
+  flex: 1;
+}
+
+.price-text {
+  font-weight: bold;
+  color: #333;
+}
+
+
+.accordion-title:hover {
+  background-color: #f0f0f0;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 10px;
+  font-weight: normal;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+/* Active accordion */
+.accordion-item.active .accordion-content {
+  max-height: 200px; /* enough to show content */
+  padding: 10px;
+}
+
+/* ===== Accordion Inner Layout ===== */
+.accordion-inner {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.accordion-image {
+  flex: 1;
+}
+
+.accordion-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.accordion-details {
+  flex: 2;
+}
+
+.accordion-details ul {
+  padding-left: 20px;
+  margin: 5px 0;
+}
+
+.accordion-details li {
+  margin-bottom: 5px;
+}
+
+.accordion-details p {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* ===== Adjust max-height for active accordion based on content ===== */
+.accordion-item.active .accordion-content {
+  max-height: 500px; /* enough to show image + details */
+  padding: 10px;
+}
+
+/* ===== Responsive adjustments ===== */
+@media (max-width: 600px) {
+  .accordion-inner {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+

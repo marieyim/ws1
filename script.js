@@ -133,6 +133,21 @@ const centerBox = document.querySelector('.center-box');
 const aboutBtn = document.getElementById('aboutBtn');
 const aboutModal = document.getElementById('aboutModal');
 const closeBtns = document.querySelectorAll('.modal .close');
+const menuBtn = document.getElementById('menuBtn');
+const menuModal = document.getElementById('menuModal');
+
+// Menu button click
+menuBtn.addEventListener('click', () => {
+  // Fade out center box
+  centerBox.classList.add('fade-out');
+
+  // Wait for fade animation to finish
+  setTimeout(() => {
+    centerBox.style.display = 'none';
+    showModal(menuModal);
+  }, 600);
+});
+
 
 // Show modal with fade-in and slide
 function showModal(modal) {
@@ -145,9 +160,11 @@ function hideModal(modal) {
     modal.classList.remove('show');
     setTimeout(() => {
         modal.style.display = 'none';
-        // Restore center-box if About modal closed
-        if (modal === aboutModal) {
+
+        // Restore center-box if About or Menu modal closed
+        if (modal === aboutModal || modal === menuModal) {
             centerBox.style.display = 'flex';
+            centerBox.classList.remove('fade-out');
             setTimeout(() => {
                 centerBox.style.opacity = 1;
                 centerBox.style.transform = 'translate(-50%, -50%) scale(1)';
@@ -244,4 +261,61 @@ function showPreview(el, mobile = false) {
 // Close preview when clicking anywhere
 hoverPreview.addEventListener('click', () => {
     hoverPreview.style.display = 'none';
+});
+
+
+// ===== Menu Modal Tabs =====
+document.querySelectorAll('#menuModal .tab-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    // Remove active state from all buttons and contents
+    document.querySelectorAll('#menuModal .tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('#menuModal .tab-content').forEach(content => content.classList.remove('active'));
+
+    // Activate selected tab
+    button.classList.add('active');
+    const tabId = button.getAttribute('data-tab');
+    document.getElementById(tabId).classList.add('active');
+  });
+});
+
+
+// Tab switching
+const tabs = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    // Remove active from all tabs
+    tabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+
+    // Switch content
+    const target = tab.dataset.tab;
+    tabContents.forEach(tc => {
+      if(tc.id === target) {
+        tc.classList.add('active');
+      } else {
+        tc.classList.remove('active');
+      }
+    });
+
+    // Reset any open accordions in other tabs
+    const accordions = document.querySelectorAll('.accordion-item');
+    accordions.forEach(a => a.classList.remove('active'));
+  });
+});
+
+// Accordion functionality
+const accordionItems = document.querySelectorAll('.accordion-item');
+
+accordionItems.forEach(item => {
+  item.addEventListener('click', () => {
+    // Close all siblings in the same parent
+    const parent = item.parentElement;
+    parent.querySelectorAll('.accordion-item').forEach(i => {
+      if(i !== item) i.classList.remove('active');
+    });
+    // Toggle current item
+    item.classList.toggle('active');
+  });
 });
