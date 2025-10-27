@@ -1,17 +1,28 @@
-// Background Carousel
 const images = [
   'images/IMG_0319.jpg',
   'images/IMG_0320.jpg',
   'images/IMG_5006.jpg'
 ];
 
-let currentIndex = 0;
-function changeBackground() {
-  document.body.style.backgroundImage = `url('${images[currentIndex]}')`;
-  currentIndex = (currentIndex + 1) % images.length;
-}
-changeBackground();
-setInterval(changeBackground, 5000);
+const bgContainer = document.getElementById('bg-container');
+
+// Create divs for each image
+images.forEach((img, i) => {
+  const slide = document.createElement('div');
+  slide.classList.add('bg-slide');
+  slide.style.backgroundImage = `url('${img}')`;
+  if (i === 0) slide.classList.add('active'); // show first
+  bgContainer.appendChild(slide);
+});
+
+let current = 0;
+const slides = document.querySelectorAll('.bg-slide');
+
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 5000);
 
 // Modal Handling 
 const modal = document.getElementById("bookingModal");
