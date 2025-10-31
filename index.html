@@ -1,418 +1,498 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WS1 Project</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WS1 Project</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 </head>
+
 <body>
+  <div id="bg-container"></div>
 
-<div id="bg-container"></div>
-
-<div class="center-box">
+  <div class="center-box">
     <h1>EAZY-STREET</h1>
     <h4>BUDGET QUALITY MEAL SNACK AND DRINKS</h4>
-    <hr class="divider">
+    <hr class="divider" />
     <div class="button-group">
-        <button id="bookBtn">BOOK A TABLE</button>
-        <button id="menuBtn">VIEW OUR MENU</button>
-        <button id="aboutBtn">ABOUT US</button>
+      <button id="bookBtn">BOOK A TABLE</button>
+      <button id="menuBtn">VIEW OUR MENU</button>
+      <button id="aboutBtn">ABOUT US</button>
     </div>
-
-</div>
-
-
-<div id="bookingModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Book a Table</h2>
-        <form>
-            <div class="form-row">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-row">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-row">
-                <label for="people">Number of People:</label>
-                <input type="number" id="people" name="people" min="1" required>
-            </div>
-            <div class="form-row">
-                <label for="date">Date:</label>
-                <input type="text" id="date" name="date" placeholder="Select date" required>
-            </div>
-            <div class="form-row">
-                <label for="time">Time:</label>
-                <input type="text" id="time" name="time" placeholder="Select time" required>
-            </div>
-
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-</div>
-
-<div id="menuModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2>EAZY-STREET Menu</h2>
-
-    <!-- Tabs -->
-    <div class="tab-buttons">
-      <button class="tab-btn active" data-tab="bundles">Bundles & Promos</button>
-      <button class="tab-btn" data-tab="dishes">Dishes</button>
-      <button class="tab-btn" data-tab="beverages">Beverages</button>
-    </div>
-
-    <!-- Tab Contents -->
-
- <!-- Bundles & Promos -->
-<div id="bundles" class="tab-content active">
-  <ul class="menu-list accordion">
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Bundle</span>
-        <span class="price-text">₱185</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/ezbundle.jpg" alt="EZ Bundle">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Chicken Poppers</li>
-              <li>Cheese Stick</li>
-              <li>Fries</li>
-              <li>Mojos</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-  </ul>
-</div>
-
-<!-- Dishes -->
-<div id="dishes" class="tab-content">
-  <ul class="menu-list accordion">
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Chicksilog</span>
-        <span class="price-text">₱95</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/chicksilog.jpg" alt="Chicksilog">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Rice</li>
-              <li>Egg</li>
-              <li>Chicken</li>
-              <li>Corn</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Porksilog</span>
-        <span class="price-text">₱99</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/porksilog.jpg" alt="Porksilog">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Rice</li>
-              <li>Egg</li>
-              <li>Grilled Pork</li>
-              <li>Corn</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Mac&Cheese</span>
-        <span class="price-text">₱60</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/macandcheese.jpg" alt="Mac and Cheese">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Mac and Cheese</li>
-              <li>2 Loafs of Bread</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-     <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Chicken & Egg Sandwich</span>
-        <span class="price-text">₱150</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/chickeneggsand.jpg" alt="Chicken and Egg">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Chicken</li>
-              <li>Egg</li>
-              <li>Hotdog</li>
-              <li>4 Cheese Stick</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-     <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Overload Sandwich</span>
-        <span class="price-text">₱145</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/overload.jpg" alt="Overload">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>ALL OUR INGRIDIENTS</li>
-              <li>Cheese Stick</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Mojos</span>
-        <span class="price-text">₱75</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/mojos.jpg" alt="Mojos">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Potota -> Mojos</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-  </ul>
-</div>
-
-<!-- Beverages -->
-<div id="beverages" class="tab-content">
-  <ul class="menu-list accordion">
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Water</span>
-        <span class="price-text">₱15</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/water.jpg" alt="EZ Water">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Purified</li>
-              <li>Alkaline</li>
-              <li>Holy (add ₱20) </li>
-              <li>Tap</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Softdrinks</span>
-        <span class="price-text">₱85</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/softdrinks.jpg" alt="Softdrinks">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Coke</li>
-              <li>Sprite</li>
-              <li>Coke Zero</li>
-              <li>Royal</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Dalgona Frappe</span>
-        <span class="price-text">₱95</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/dalgona.jpg" alt="Dalgona Frappe">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Di ko alam saan to gawa</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-    <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Sweetcorn Overload</span>
-        <span class="price-text">₱85</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/sweetcorn.jpg" alt="Sweetcorn Overload">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Corn</li>
-              <li>Cheese?</li>
-              <li>More corn</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-     <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Coffee Jelly</span>
-        <span class="price-text">₱85</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/coffeejelly.jpg" alt="Coffee Jelly">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Arabica Cofee</li>
-              <li>Jellyace</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-     <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Spanish Latte</span>
-        <span class="price-text">₱99</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/spanishlatte.jpg" alt="Spanish Latte">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Spanish human</li>
-              <li>Latte</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-     <li class="accordion-item">
-      <div class="accordion-title">
-        <span class="title-text">EZ Iced Choco</span>
-        <span class="price-text">₱75</span>
-      </div>
-      <div class="accordion-content">
-        <div class="accordion-inner">
-          <div class="accordion-image">
-            <img src="images/icedchoco.jpg" alt="Iced Choco">
-          </div>
-          <div class="accordion-details">
-            <ul>
-              <li>Ice</li>
-              <li>Milo</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </li>
-
-  </ul>
-</div>
-
   </div>
-</div>
 
-
-<div id="aboutModal" class="modal">
-  
+  <div id="bookingModal" class="modal">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>About Us</h2>
-<p>Once upon a time, in the mystical year of 1969, our founder Jose P. Rizal (not the national hero, just a guy with great taste in snacks) accidentally tripped over a mango in Antipolo City and decided, “Hey, why not start a store here?”</p>
-
-<p>And so, <strong>EAZY-STREET</strong> was born. A magical place where convenience meets the street, and where getting what you need is easier than figuring out how to parallel park. Rumor has it, the first sale involved a confused teacher, a dog, and happened during an online class.</p>
-
-<p><strong>Store Location:</strong> Antipolo City (the land of hills, views, and very irate drivers)</p>
-<p><strong>Store Hours:</strong> 7:00 AM - 9:00 PM (Open on weekends, because why not?)</p>
-
-<p><strong>Manager:</strong> 
-    <span class="hover-image" data-img="images/ser.jpg">Jasper Kutz Ebedo</span>
-</p>
-
-<p><strong>Staffs:</strong></p>
-<ul>
-    <li><span class="hover-image" data-img="images/marie.jpg">Marienille Yim</span> – Counter</li>
-    <li><span class="hover-image" data-img="images/tricia.jpg">Tricia Torion</span> – Drive Thru Counter</li>
-    <li><span class="hover-image" data-img="images/roy.jpg">Roy Doromal Jr.</span> – Chef</li>
-    <li><span class="hover-image" data-img="images/gerald.jpg">Gerard Eviota</span> – Waiter</li>
-</ul>
-
-
-        <!-- Image Preview -->
-          <div id="hoverPreview"></div>
+      <span class="close">&times;</span>
+      <h2>Book a Table</h2>
+      <form>
+        <div class="form-row">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form-row">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="form-row">
+          <label for="people">Number of People:</label>
+          <input type="number" id="people" name="people" min="1" required />
+        </div>
+        <div class="form-row">
+          <label for="date">Date:</label>
+          <input type="text" id="date" name="date" placeholder="Select date" required />
+        </div>
+        <div class="form-row">
+          <label for="time">Time:</label>
+          <input type="text" id="time" name="time" placeholder="Select time" required />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
     </div>
-    
-</div>
+  </div>
 
+  <div id="menuModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>EAZY-STREET Menu</h2>
 
-<script src="script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="bundles">Bundles & Promos</button>
+        <button class="tab-btn" data-tab="dishes">Dishes</button>
+        <button class="tab-btn" data-tab="beverages">Beverages</button>
+      </div>
+
+      <div id="bundles" class="tab-content active">
+        <ul class="menu-list accordion">
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Bundle</span>
+              <span class="price-text">₱185</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/ezbundle.jpg" alt="EZ Bundle" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Chicken Poppers</li>
+                    <li>Cheese Stick</li>
+                    <li>Fries</li>
+                    <li>Mojos</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Massive Bundle</span>
+              <span class="price-text">₱250</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/massive.jpg" alt="EZ Massive Bundle" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Chicken Poppers</li>
+                    <li>Cheese Stick</li>
+                    <li>Fries</li>
+                    <li>Mojos</li>
+                    <li>Pizza Roll</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div id="dishes" class="tab-content">
+        <ul class="menu-list accordion">
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Mac&Cheese</span>
+              <span class="price-text">₱60</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/macandcheese.jpg" alt="Mac and Cheese" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Mac and Cheese</li>
+                    <li>2 Loafs of Bread</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Mojos</span>
+              <span class="price-text">₱75</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/mojos.jpg" alt="Mojos" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Thin-cut potato</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Chicksilog</span>
+              <span class="price-text">₱95</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/chicksilog.jpg" alt="Chicksilog" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Rice</li>
+                    <li>Egg</li>
+                    <li>Chicken</li>
+                    <li>Corn</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Porksilog</span>
+              <span class="price-text">₱99</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/porksilog.jpg" alt="Porksilog" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Rice</li>
+                    <li>Egg</li>
+                    <li>Grilled Pork</li>
+                    <li>Corn</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Overload Sandwich</span>
+              <span class="price-text">₱145</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/overload.jpg" alt="Overload" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Overload Sandwich</li>
+                    <li>Cheese Stick</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Chicken & Egg Sandwich</span>
+              <span class="price-text">₱150</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/chickeneggsand.jpg" alt="Chicken and Egg" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Chicken and Egg sandwich</li>
+                    <li>Cheese Sticks</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+
+        <h3 class="sub-section-title">Desserts</h3>
+        <ul class="menu-list accordion">
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ KitKat Delight</span>
+              <span class="price-text">₱99</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/kitkat.jpg" alt="KitKat Delight" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Chocolate ice cream base</li>
+                    <li>Crushed KitKat bars</li>
+                    <li>Whipped cream topping</li>
+                    <li>Chocolate drizzle</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Oreo Blast</span>
+              <span class="price-text">₱99</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/oreo.jpg" alt="Oreo Blast" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Cookies and cream ice cream</li>
+                    <li>Crushed Oreo pieces</li>
+                    <li>Vanilla cream</li>
+                    <li>Chocolate syrup</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Strawberry Croffle</span>
+              <span class="price-text">₱99</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/truffle.jpg" alt="Strawberry Croffle" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Fresh strawberries</li>
+                    <li>Sweet waffle base</li>
+                    <li>Whipped cream</li>
+                    <li>Strawberry syrup</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+
+      <div id="beverages" class="tab-content">
+        <ul class="menu-list accordion">
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Water</span>
+              <span class="price-text">₱15</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/water.jpg" alt="EZ Water" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Purified</li>
+                    <li>Alkaline</li>
+                    <li>Holy (add ₱20)</li>
+                    <li>Tap</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Iced Choco</span>
+              <span class="price-text">₱75</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/icedchoco.jpg" alt="Iced Choco" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>16oz</li>
+                    <li>22oz (Add ₱20)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Softdrinks</span>
+              <span class="price-text">₱85</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/softdrinks.jpg" alt="Softdrinks" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>Coke</li>
+                    <li>Sprite</li>
+                    <li>Coke Zero</li>
+                    <li>Royal</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Sweetcorn Overload</span>
+              <span class="price-text">₱85</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/sweetcorn.jpg" alt="Sweetcorn Overload" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>12oz</li>
+                    <li>16oz (Add ₱20)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Coffee Jelly</span>
+              <span class="price-text">₱85</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/coffeejelly.jpg" alt="Coffee Jelly" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>12oz</li>
+                    <li>16oz (Add ₱20)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Dalgona Frappe</span>
+              <span class="price-text">₱95</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/dalgona.jpg" alt="Dalgona Frappe" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>12oz</li>
+                    <li>16oz (Add ₱20)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="accordion-item">
+            <div class="accordion-title">
+              <span class="title-text">EZ Spanish Latte</span>
+              <span class="price-text">₱99</span>
+            </div>
+            <div class="accordion-content">
+              <div class="accordion-inner">
+                <div class="accordion-image">
+                  <img src="images/spanishlatte.jpg" alt="Spanish Latte" />
+                </div>
+                <div class="accordion-details">
+                  <ul>
+                    <li>12oz</li>
+                    <li>16oz (Add ₱20)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div id="aboutModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>About Us</h2>
+      <p>
+        Once upon a time, in the mystical year of 1969, our founder Jose P. Rizal
+        (not the national hero, just a guy with great taste in snacks) accidentally
+        tripped over a mango in Antipolo City and decided, “Hey, why not start a store here?”
+      </p>
+      <p>
+        And so, <strong>EAZY-STREET</strong> was born. A magical place where convenience meets
+        the street, and where getting what you need is easier than figuring out how to
+        parallel park. Rumor has it, the first sale involved a confused teacher, a dog,
+        and happened during an online class.
+      </p>
+      <p><strong>Store Location:</strong> Antipolo City (the land of hills, views, and very irate drivers)</p>
+      <p><strong>Store Hours:</strong> 7:00 AM - 9:00 PM (Open on weekends, because why not?)</p>
+      <p>
+        <strong>Manager:</strong>
+        <span class="hover-image" data-img="images/ser.jpg">Jasper Kutz Ebedo</span>
+      </p>
+      <p><strong>Staffs:</strong></p>
+      <ul>
+        <li><span class="hover-image" data-img="images/marie.jpg">Marienille Yim</span> – Counter</li>
+        <li><span class="hover-image" data-img="images/tricia.jpg">Tricia Torion</span> – Drive Thru Counter</li>
+        <li><span class="hover-image" data-img="images/roy.jpg">Roy Doromal Jr.</span> – Chef</li>
+        <li><span class="hover-image" data-img="images/gerald.jpg">Gerard Eviota</span> – Waiter</li>
+      </ul>
+      <div id="hoverPreview"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>
